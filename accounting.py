@@ -25,11 +25,15 @@ def current_accounts_receivable(path):
         line = line.rstrip()
         info = line.split('|')            # info = ['rando #', 'customer_name', 'cust_melon_qty', 'cust_paid']
 
-        info.pop(0)                       # if rando # is needed after all, also have to change all info[index values]
+        info.pop(0)                       # if rando # is needed after all, also have to change line 30
 
-        customer_name, cust_melon_qty, cust_paid = info
+        customer_name, cust_melon_qty, cust_paid = info    # assigning respective variable names
 
-        print customer_name, cust_melon_qty, cust_paid
+        customer_invoice = float(cust_melon_qty) * float(melon_cost)     # customer's total balance
+
+        # customer_balance = float(customer_invoice) % float(cust_paid)    # stores the difference btwen amt paid & owed
+
+        print customer_name, customer_invoice
 
 
 current_accounts_receivable("customer-orders.txt")
