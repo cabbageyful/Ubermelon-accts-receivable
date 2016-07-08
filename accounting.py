@@ -34,12 +34,11 @@ def current_accounts_receivable(path):
 
         customer_invoice = cust_melon_qty * float(melon_cost)     # customer's total balance
 
-        customer_balance = float(customer_invoice) % cust_paid    # stores the difference btwen amt paid & owed
+        customer_balance = customer_invoice % cust_paid    # stores the difference btwen amt paid & owed
 
-        print customer_balance, cust_melon_qty, cust_paid
-
-        # if customer_invoice != cust_paid:
-        #    print '{} owed {:2f} and paid {:2f}. Balance is {:2f}'.format(customer_name, customer_invoice, cust_paid, customer_balance)
+        if customer_invoice != cust_paid:
+            print '{} owed {} and paid {}. Balance is {}'.format(
+                customer_name, customer_invoice, cust_paid, customer_balance)
 
 
 current_accounts_receivable("customer-orders.txt")
