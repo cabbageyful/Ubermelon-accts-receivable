@@ -31,9 +31,9 @@ def current_accounts_receivable(path):
 
         customer_invoice = float(cust_melon_qty) * float(melon_cost)     # customer's total balance
 
-        # customer_balance = float(customer_invoice) % float(cust_paid)    # stores the difference btwen amt paid & owed
+        customer_balance = float(customer_invoice) % float(cust_paid)    # stores the difference btwen amt paid & owed
 
-        print customer_name, customer_invoice
+        print customer_name, customer_invoice, customer_balance
 
 
 current_accounts_receivable("customer-orders.txt")
