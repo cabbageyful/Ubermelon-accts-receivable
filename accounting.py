@@ -21,7 +21,7 @@ def current_accounts_receivable(path):
     """
 
     customer_orders = open(path)
-    for line in customer_orders:          # i also abbreviate 'customer' as 'cust'
+    for line in customer_orders:          # I also abbreviate 'customer' as 'cust'
         line = line.rstrip()
         info = line.split('|')            # info = ['rando #', 'customer_name', 'cust_melon_qty', 'cust_paid']
 
@@ -29,11 +29,17 @@ def current_accounts_receivable(path):
 
         customer_name, cust_melon_qty, cust_paid = info    # assigning respective variable names
 
-        customer_invoice = float(cust_melon_qty) * float(melon_cost)     # customer's total balance
+        cust_melon_qty = float(cust_melon_qty)
+        cust_paid = float(cust_paid)
 
-        customer_balance = float(customer_invoice) % float(cust_paid)    # stores the difference btwen amt paid & owed
+        customer_invoice = cust_melon_qty * float(melon_cost)     # customer's total balance
 
-        print customer_name, customer_invoice, customer_balance
+        customer_balance = float(customer_invoice) % cust_paid    # stores the difference btwen amt paid & owed
+
+        print customer_balance, cust_melon_qty, cust_paid
+
+        # if customer_invoice != cust_paid:
+        #    print '{} owed {:2f} and paid {:2f}. Balance is {:2f}'.format(customer_name, customer_invoice, cust_paid, customer_balance)
 
 
 current_accounts_receivable("customer-orders.txt")
