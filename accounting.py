@@ -7,17 +7,16 @@ Read over the solution and see how it compairs to your answer."""
 
 melon_cost = 1.00
 
-# rando # | customer_name | cust_melon_quantity | customer_paid
-# 32|Doris Castillo|84|84.00
-
-# customer invoice = # of melons * melon cost
-# if customer invoice does not equal customer_paid
-# print out customer's name, & amounts. (can I do a mod too?!) {:.2f}.format indicates 2 decimal places
-
 
 def current_accounts_receivable(path):
 
-    """
+    """Creates report of all customers with any balance.
+
+    Requires input of the file path to the .txt file with customer orders.
+    Set up to read format of customer order file as follows:
+    32|Doris Castillo|84|84.0
+    Will eliminate the 1st # preceeding the customer name, find anyone who has
+
     """
 
     customer_orders = open(path)
@@ -30,9 +29,9 @@ def current_accounts_receivable(path):
         customer_name, cust_melon_qty, cust_paid = info    # assigning respective variable names
 
         cust_melon_qty = float(cust_melon_qty)
-        cust_paid = float(cust_paid)
+        cust_paid = float(cust_paid)                       # typecasts as floats
 
-        customer_invoice = cust_melon_qty * float(melon_cost)     # customer's total balance
+        customer_invoice = float(cust_melon_qty) * float(melon_cost)     # customer's total balance
 
         customer_balance = customer_invoice % cust_paid    # stores the difference btwen amt paid & owed
 
