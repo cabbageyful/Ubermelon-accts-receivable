@@ -21,10 +21,15 @@ def current_accounts_receivable(path):
     """
 
     customer_orders = open(path)
-    for line in customer_orders:
+    for line in customer_orders:          # i also abbreviate 'customer' as 'cust'
         line = line.rstrip()
-        info = line.split('|')            # info = ['rando', 'customer_name', 'cust_melon_qty', 'cust_paid']
+        info = line.split('|')            # info = ['rando #', 'customer_name', 'cust_melon_qty', 'cust_paid']
 
-        print info
+        info.pop(0)                       # if rando # is needed after all, also have to change all info[index values]
+
+        customer_name, cust_melon_qty, cust_paid = info
+
+        print customer_name, cust_melon_qty, cust_paid
+
 
 current_accounts_receivable("customer-orders.txt")
